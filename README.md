@@ -1,7 +1,5 @@
 # ![image](https://www.hydropart.ru/img/service/noun-microservices.png) MicroserviceTester
 
-![image](https://www.hydropart.ru/img/service/noun-microservices.png)
-
 **MicroserviceTester** is a comprehensive .NET 8.0-based project designed to simulate and test the interactions between multiple microservices. It encompasses User, Product, and Order services, each with their own models, controllers, and services. The project leverages a variety of testing methodologies, including Unit Testing, Integration Testing, Behavior-Driven Development (BDD) Testing, Contract Testing, and Performance Benchmarking, ensuring robust and reliable microservice interactions. Additionally, the project employs code coverage tools to guarantee thorough testing coverage.
 
 ## Table of Contents
