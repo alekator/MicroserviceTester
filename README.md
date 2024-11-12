@@ -1,6 +1,7 @@
 # MicroserviceTester
 
-![MicroserviceTester Logo](https://via.placeholder.com/150)
+![MicroserviceTester Logo](![image](https://github.com/user-attachments/assets/4f52bdcc-d71b-4f86-96f3-908ddc4cbb8e)
+)
 
 **MicroserviceTester** is a comprehensive .NET 8.0-based project designed to simulate and test the interactions between multiple microservices. It encompasses User, Product, and Order services, each with their own models, controllers, and services. The project leverages a variety of testing methodologies, including Unit Testing, Integration Testing, Behavior-Driven Development (BDD) Testing, Contract Testing, and Performance Benchmarking, ensuring robust and reliable microservice interactions. Additionally, the project employs code coverage tools to guarantee thorough testing coverage.
 
@@ -52,6 +53,7 @@ The project emphasizes thorough testing to ensure each service operates correctl
 - **Swagger (Swashbuckle.AspNetCore)**: API documentation and testing UI.
 - **PactNet**: For consumer-driven contract testing.
 - **Microsoft.AspNetCore.Mvc.Testing**: Facilitates integration testing of ASP.NET Core applications.
+- **GitHub Actions**: To configure CI/CD pipelines.
 
 ## Microservices Architecture
 
