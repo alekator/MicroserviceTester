@@ -116,8 +116,8 @@ Swagger UI is integrated into the application for easy testing and exploration o
 
 1. **Access Swagger UI**
 
-Open your browser and navigate to: `http://localhost:<PORT>/swagger`
-Replace <PORT> with the port number displayed in the console output when the application starts.
+  Open your browser and navigate to: `http://localhost:<PORT>/swagger`
+  Replace <PORT> with the port number displayed in the console output when the application starts.
 
 2. **Interact with APIs**
 Use the interactive Swagger interface to test various endpoints for Users, Products, and Orders.
