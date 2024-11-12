@@ -27,8 +27,6 @@
   - [Performance Tests](#performance-tests)
   - [Code Coverage](#code-coverage)
 - [Licenses](#licenses)
-- [Contributing](#contributing)
-- [Contact](#contact)
 
 ## Project Overview
 
@@ -155,22 +153,22 @@ MicroserviceTester incorporates a diverse suite of tests to ensure each microser
 - Purpose: Assess how the system handles multiple simultaneous operations, ensuring thread safety and data integrity.
 - Tools Used: xUnit, FluentAssertions, System.Threading.
 - Coverage:
-  - UserServiceConcurrencyTests: Tests concurrent user creation, ensuring only one user is created and others receive conflict responses.
+  UserServiceConcurrencyTests: Tests concurrent user creation, ensuring only one user is created and others receive conflict responses.
 ### Model Validation Tests
 - Purpose: Verify that data models enforce validation rules, preventing invalid data from being processed.
 - Tools Used: xUnit, FluentAssertions.
 - Coverage:
-  - UserModelValidationTests: Tests scenarios like missing username and duplicate user IDs, ensuring appropriate HTTP responses.
+  UserModelValidationTests: Tests scenarios like missing username and duplicate user IDs, ensuring appropriate HTTP responses.
 ### Performance Tests
 - Purpose: Measure the performance and efficiency of the services under various conditions.
 - Tools Used: BenchmarkDotNet.
 - Coverage:
-  - UserServiceBenchmark: Benchmarks the GetUserById and DeleteUser methods to assess their performance metrics.
+  UserServiceBenchmark: Benchmarks the GetUserById and DeleteUser methods to assess their performance metrics.
 ### Code Coverage
 - Purpose: Ensure that the test suite adequately covers the codebase, identifying untested areas.
 - Tools Used: Coverlet integrated with xUnit.
 - Configuration:
-  - Code coverage is configured in the .csproj file with GenerateCoverageFile and CoverletOutputFormat set to opencover.
+  Code coverage is configured in the .csproj file with GenerateCoverageFile and CoverletOutputFormat set to opencover.
 - Generating Coverage Report:
 
   `dotnet test /p:CollectCoverage=true`
