@@ -131,48 +131,63 @@ MicroserviceTester incorporates a diverse suite of tests to ensure each microser
 - Tools Used: xUnit, Moq, FluentAssertions.
 - Coverage:
    - UserServiceTests: Tests for adding and retrieving users.
- -- ProductServiceTests: Tests for adding and retrieving products.
- --- OrderServiceTests: Tests for adding and retrieving orders, ensuring dependencies on UserService and ProductService are respected.
+   - ProductServiceTests: Tests for adding and retrieving products.
+   - OrderServiceTests: Tests for adding and retrieving orders, ensuring dependencies on UserService and ProductService are respected.
 ## Integration Tests
-Purpose: Test the interactions between different microservices and ensure they work together as expected.
-Tools Used: xUnit, Microsoft.AspNetCore.Mvc.Testing, FluentAssertions.
-Coverage:
-ApplicationEndToEndTests: Simulates full workflows including user, product, and order creation.
-ExtendedApplicationEndToEndTests: Additional scenarios to verify the robustness of service interactions.
+- Purpose: Test the interactions between different microservices and ensure they work together as expected.
+- Tools Used: xUnit, Microsoft.AspNetCore.Mvc.Testing, FluentAssertions.
+- Coverage:
+  - ApplicationEndToEndTests: Simulates full workflows including user, product, and order creation.
+  - ExtendedApplicationEndToEndTests: Additional scenarios to verify the robustness of service interactions.
 ## BDD Tests
-Purpose: Define and execute behavior-driven scenarios to validate the system's behavior from an end-user perspective.
-Tools Used: SpecFlow, xUnit, FluentAssertions.
-Coverage:
-UsersSteps: Steps for creating users, products, and orders, and verifying the persistence of orders post user deletion.
+- Purpose: Define and execute behavior-driven scenarios to validate the system's behavior from an end-user perspective.
+- Tools Used: SpecFlow, xUnit, FluentAssertions.
+- Coverage:
+  - UsersSteps: Steps for creating users, products, and orders, and verifying the persistence of orders post user deletion.
 ## Contract Tests
-Purpose: Ensure that microservices adhere to agreed-upon contracts, facilitating reliable communication between services.
-Tools Used: WireMock.Net, xUnit, FluentAssertions.
-Coverage:
-OrderServiceContractTests: Validates order creation contracts.
-ProductServiceContractTests: Validates product creation contracts.
-UserServiceContractTests: Confirms that UserService implements the necessary interfaces.
+- Purpose: Ensure that microservices adhere to agreed-upon contracts, facilitating reliable communication between services.
+- Tools Used: WireMock.Net, xUnit, FluentAssertions.
+- Coverage:
+  - OrderServiceContractTests: Validates order creation contracts.
+  - ProductServiceContractTests: Validates product creation contracts.
+  - UserServiceContractTests: Confirms that UserService implements the necessary interfaces.
 ## Concurrency Tests
-Purpose: Assess how the system handles multiple simultaneous operations, ensuring thread safety and data integrity.
-Tools Used: xUnit, FluentAssertions, System.Threading.
-Coverage:
-UserServiceConcurrencyTests: Tests concurrent user creation, ensuring only one user is created and others receive conflict responses.
+- Purpose: Assess how the system handles multiple simultaneous operations, ensuring thread safety and data integrity.
+- Tools Used: xUnit, FluentAssertions, System.Threading.
+- Coverage:
+  - UserServiceConcurrencyTests: Tests concurrent user creation, ensuring only one user is created and others receive conflict responses.
 ## Model Validation Tests
-Purpose: Verify that data models enforce validation rules, preventing invalid data from being processed.
-Tools Used: xUnit, FluentAssertions.
-Coverage:
-UserModelValidationTests: Tests scenarios like missing username and duplicate user IDs, ensuring appropriate HTTP responses.
+- Purpose: Verify that data models enforce validation rules, preventing invalid data from being processed.
+- Tools Used: xUnit, FluentAssertions.
+- Coverage:
+  - UserModelValidationTests: Tests scenarios like missing username and duplicate user IDs, ensuring appropriate HTTP responses.
 ## Performance Tests
-Purpose: Measure the performance and efficiency of the services under various conditions.
-Tools Used: BenchmarkDotNet.
-Coverage:
-UserServiceBenchmark: Benchmarks the GetUserById and DeleteUser methods to assess their performance metrics.
+- Purpose: Measure the performance and efficiency of the services under various conditions.
+- Tools Used: BenchmarkDotNet.
+- Coverage:
+  - UserServiceBenchmark: Benchmarks the GetUserById and DeleteUser methods to assess their performance metrics.
 ## Code Coverage
-Purpose: Ensure that the test suite adequately covers the codebase, identifying untested areas.
-Tools Used: Coverlet integrated with xUnit.
-Configuration:
-Code coverage is configured in the .csproj file with GenerateCoverageFile and CoverletOutputFormat set to opencover.
-Generating Coverage Report:
-bash
-Копировать код
-dotnet test /p:CollectCoverage=true
-The coverage report will be generated in the specified format, allowing for analysis of test coverage.
+- Purpose: Ensure that the test suite adequately covers the codebase, identifying untested areas.
+- Tools Used: Coverlet integrated with xUnit.
+- Configuration:
+  - Code coverage is configured in the .csproj file with GenerateCoverageFile and CoverletOutputFormat set to opencover.
+- Generating Coverage Report:
+
+  `dotnet test /p:CollectCoverage=true`
+
+  The coverage report will be generated in the specified format, allowing for analysis of test coverage.
+
+### Licenses
+This project utilizes several open-source libraries, each governed by its own license. Below is a summary of the main licenses involved:
+
+- .NET 8.0 SDK: MIT License
+- xUnit: Apache License 2.0
+- Moq: MIT License
+- FluentAssertions: MIT License
+- SpecFlow: Apache License 2.0
+- WireMock.Net: Apache License 2.0
+- BenchmarkDotNet: MIT License
+- Coverlet: MIT License
+- Swashbuckle.AspNetCore: Apache License 2.0
+For detailed information, please refer to each library's respective repository and license file.
+
