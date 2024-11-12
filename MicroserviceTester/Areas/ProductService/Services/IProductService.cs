@@ -8,6 +8,7 @@ namespace MicroserviceTester.Areas.ProductService.Services
         void AddProduct(Product product);
         Product? GetProduct(int id);
         bool ProductExists(int id);
+        void ClearAllProducts();
         IEnumerable<Product> GetAllProducts();
     }
 }

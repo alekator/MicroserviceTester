@@ -15,7 +15,6 @@ namespace MicroserviceTester.Areas.ProductService.Controllers
             _productService = productService;
         }
 
-        // GET: api/Products
         [HttpGet]
         public IActionResult GetProducts()
         {
@@ -23,7 +22,6 @@ namespace MicroserviceTester.Areas.ProductService.Controllers
             return Ok(products);
         }
 
-        // GET: api/Products/5
         [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
@@ -31,7 +29,6 @@ namespace MicroserviceTester.Areas.ProductService.Controllers
             return product != null ? Ok(product) : NotFound();
         }
 
-        // POST: api/Products
         [HttpPost]
         public IActionResult CreateProduct([FromBody] Product product)
         {

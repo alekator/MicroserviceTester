@@ -28,25 +28,21 @@ namespace MicroserviceTester.Tests.EndToEndTests
 
             // Act & Assert
 
-            // Создание пользователя
             var userJson = JsonConvert.SerializeObject(user);
             var userContent = new StringContent(userJson, Encoding.UTF8, "application/json");
             var userResponse = await _client.PostAsync("/api/Users", userContent);
             Assert.Equal(HttpStatusCode.Created, userResponse.StatusCode);
 
-            // Создание продукта
             var productJson = JsonConvert.SerializeObject(product);
             var productContent = new StringContent(productJson, Encoding.UTF8, "application/json");
             var productResponse = await _client.PostAsync("/api/Products", productContent);
             Assert.Equal(HttpStatusCode.Created, productResponse.StatusCode);
 
-            // Создание заказа
             var orderJson = JsonConvert.SerializeObject(order);
             var orderContent = new StringContent(orderJson, Encoding.UTF8, "application/json");
             var orderResponse = await _client.PostAsync("/api/Orders", orderContent);
             Assert.Equal(HttpStatusCode.Created, orderResponse.StatusCode);
 
-            // Получение заказа
             var getOrderResponse = await _client.GetAsync($"/api/Orders/{order.Id}");
             Assert.Equal(HttpStatusCode.OK, getOrderResponse.StatusCode);
             var orderResponseString = await getOrderResponse.Content.ReadAsStringAsync();
@@ -56,7 +52,6 @@ namespace MicroserviceTester.Tests.EndToEndTests
             Assert.Equal(order.UserId, retrievedOrder.UserId);
             Assert.Equal(order.ProductId, retrievedOrder.ProductId);
 
-            // Дополнительные проверки: получение списка заказов
             var getOrdersResponse = await _client.GetAsync("/api/Orders");
             Assert.Equal(HttpStatusCode.OK, getOrdersResponse.StatusCode);
             var ordersListString = await getOrdersResponse.Content.ReadAsStringAsync();
@@ -67,34 +62,28 @@ namespace MicroserviceTester.Tests.EndToEndTests
         [Fact]
         public async Task DeleteUser_Should_Not_Affect_Existing_Orders()
         {
-            // Arrange
             var user = new User { Id = 20, Username = "DeleteUser" };
             var product = new Product { Id = 20, Name = "DeleteProduct" };
             var order = new Order { Id = 20, UserId = 20, ProductId = 20 };
 
-            // Создание пользователя
             var userJson = JsonConvert.SerializeObject(user);
             var userContent = new StringContent(userJson, Encoding.UTF8, "application/json");
             var userResponse = await _client.PostAsync("/api/Users", userContent);
             Assert.Equal(HttpStatusCode.Created, userResponse.StatusCode);
 
-            // Создание продукта
             var productJson = JsonConvert.SerializeObject(product);
             var productContent = new StringContent(productJson, Encoding.UTF8, "application/json");
             var productResponse = await _client.PostAsync("/api/Products", productContent);
             Assert.Equal(HttpStatusCode.Created, productResponse.StatusCode);
 
-            // Создание заказа
             var orderJson = JsonConvert.SerializeObject(order);
             var orderContent = new StringContent(orderJson, Encoding.UTF8, "application/json");
             var orderResponse = await _client.PostAsync("/api/Orders", orderContent);
             Assert.Equal(HttpStatusCode.Created, orderResponse.StatusCode);
 
-            // Удаление пользователя
             var deleteUserResponse = await _client.DeleteAsync($"/api/Users/{user.Id}");
             Assert.Equal(HttpStatusCode.NoContent, deleteUserResponse.StatusCode);
 
-            // Проверка существования заказа
             var getOrderResponse = await _client.GetAsync($"/api/Orders/{order.Id}");
             Assert.Equal(HttpStatusCode.OK, getOrderResponse.StatusCode);
         }

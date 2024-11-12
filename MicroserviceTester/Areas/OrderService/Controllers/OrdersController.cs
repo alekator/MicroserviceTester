@@ -24,7 +24,6 @@ namespace MicroserviceTester.Areas.OrderService.Controllers
             _productService = productService;
         }
 
-        // GET: api/Orders
         [HttpGet]
         public IActionResult GetOrders()
         {
@@ -32,7 +31,6 @@ namespace MicroserviceTester.Areas.OrderService.Controllers
             return Ok(orders);
         }
 
-        // GET: api/Orders/5
         [HttpGet("{id}")]
         public IActionResult GetOrder(int id)
         {
@@ -40,7 +38,6 @@ namespace MicroserviceTester.Areas.OrderService.Controllers
             return order != null ? Ok(order) : NotFound();
         }
 
-        // POST: api/Orders
         [HttpPost]
         public IActionResult CreateOrder([FromBody] Order order)
         {

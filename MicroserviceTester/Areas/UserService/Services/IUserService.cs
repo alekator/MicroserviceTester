@@ -9,6 +9,7 @@ namespace MicroserviceTester.Areas.UserService.Services
         User? GetUser(int id);
         bool UserExists(int id);
         void DeleteUser(int id);
+        void ClearAllUsers();
         IEnumerable<User> GetAllUsers();
     }
 }

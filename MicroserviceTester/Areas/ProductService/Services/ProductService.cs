@@ -27,5 +27,9 @@ namespace MicroserviceTester.Areas.ProductService.Services
         {
             return _products;
         }
+        public void ClearAllProducts()
+        {
+            _products.Clear();
+        }
     }
 }

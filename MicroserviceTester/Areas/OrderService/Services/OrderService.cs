@@ -44,5 +44,9 @@ namespace MicroserviceTester.Areas.OrderService.Services
         {
             return _orders;
         }
+        public void ClearAllOrders()
+        {
+            _orders.Clear();
+        }
     }
 }

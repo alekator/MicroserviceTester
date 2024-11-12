@@ -26,25 +26,21 @@ namespace MicroserviceTester.Tests.IntegrationTests
             var product = new Product { Id = 1, Name = "OrderProduct" };
             var order = new Order { Id = 1, UserId = 1, ProductId = 1 };
 
-            // Создание пользователя
             var userJson = JsonConvert.SerializeObject(user);
             var userContent = new StringContent(userJson, Encoding.UTF8, "application/json");
             var userResponse = await _client.PostAsync("/api/Users", userContent);
             Assert.Equal(HttpStatusCode.Created, userResponse.StatusCode);
 
-            // Создание продукта
             var productJson = JsonConvert.SerializeObject(product);
             var productContent = new StringContent(productJson, Encoding.UTF8, "application/json");
             var productResponse = await _client.PostAsync("/api/Products", productContent);
             Assert.Equal(HttpStatusCode.Created, productResponse.StatusCode);
 
-            // Создание заказа
             var orderJson = JsonConvert.SerializeObject(order);
             var orderContent = new StringContent(orderJson, Encoding.UTF8, "application/json");
             var orderResponse = await _client.PostAsync("/api/Orders", orderContent);
             Assert.Equal(HttpStatusCode.Created, orderResponse.StatusCode);
 
-            // Получение заказа
             var getOrderResponse = await _client.GetAsync("/api/Orders/1");
             Assert.Equal(HttpStatusCode.OK, getOrderResponse.StatusCode);
 
@@ -62,13 +58,11 @@ namespace MicroserviceTester.Tests.IntegrationTests
             var product = new Product { Id = 2, Name = "Product2" };
             var order = new Order { Id = 2, UserId = 999, ProductId = 2 };
 
-            // Создание продукта
             var productJson = JsonConvert.SerializeObject(product);
             var productContent = new StringContent(productJson, Encoding.UTF8, "application/json");
             var productResponse = await _client.PostAsync("/api/Products", productContent);
             Assert.Equal(HttpStatusCode.Created, productResponse.StatusCode);
 
-            // Создание заказа с несуществующим пользователем
             var orderJson = JsonConvert.SerializeObject(order);
             var orderContent = new StringContent(orderJson, Encoding.UTF8, "application/json");
             var orderResponse = await _client.PostAsync("/api/Orders", orderContent);
@@ -82,13 +76,11 @@ namespace MicroserviceTester.Tests.IntegrationTests
             var user = new User { Id = 3, Username = "User3" };
             var order = new Order { Id = 3, UserId = 3, ProductId = 999 };
 
-            // Создание пользователя
             var userJson = JsonConvert.SerializeObject(user);
             var userContent = new StringContent(userJson, Encoding.UTF8, "application/json");
             var userResponse = await _client.PostAsync("/api/Users", userContent);
             Assert.Equal(HttpStatusCode.Created, userResponse.StatusCode);
 
-            // Создание заказа с несуществующим продуктом
             var orderJson = JsonConvert.SerializeObject(order);
             var orderContent = new StringContent(orderJson, Encoding.UTF8, "application/json");
             var orderResponse = await _client.PostAsync("/api/Orders", orderContent);

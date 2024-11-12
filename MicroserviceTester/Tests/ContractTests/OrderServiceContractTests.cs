@@ -18,7 +18,6 @@ namespace MicroserviceTester.Tests.ContractTests
 
         public OrderServiceContractTests()
         {
-            // Инициализация мок-сервера на динамическом порту
             _server = WireMockServer.Start();
             var port = _server.Ports[0];
             _httpClient = new HttpClient
@@ -29,13 +28,11 @@ namespace MicroserviceTester.Tests.ContractTests
 
         public Task InitializeAsync()
         {
-            // Нет инициализации, необходимой перед тестами
             return Task.CompletedTask;
         }
 
         public Task DisposeAsync()
         {
-            // Остановка мок-сервера после завершения тестов
             _server.Stop();
             _server.Dispose();
             _httpClient.Dispose();
@@ -49,7 +46,6 @@ namespace MicroserviceTester.Tests.ContractTests
             var order = new Order { Id = 1, UserId = 1, ProductId = 1 };
             var responseBody = JsonConvert.SerializeObject(order);
 
-            // Настройка ожидаемого запроса и ответа без условий на заголовки и тело
             _server.Given(
                 Request.Create()
                     .WithPath("/api/Orders")
@@ -57,7 +53,7 @@ namespace MicroserviceTester.Tests.ContractTests
             )
             .RespondWith(
                 Response.Create()
-                    .WithStatusCode(201) // HTTP 201 Created
+                    .WithStatusCode(201)
                     .WithHeader("Content-Type", "application/json; charset=utf-8")
                     .WithBody(responseBody)
             );
@@ -66,7 +62,6 @@ namespace MicroserviceTester.Tests.ContractTests
             var content = new StringContent(JsonConvert.SerializeObject(order), System.Text.Encoding.UTF8, "application/json");
             var response = await _httpClient.PostAsync("/api/Orders", content);
 
-            // Вывод полученных запросов для отладки
             foreach (var entry in _server.LogEntries)
             {
                 Console.WriteLine($"Path: {entry.RequestMessage.Path}, Method: {entry.RequestMessage.Method}, Body: {entry.RequestMessage.Body}");
@@ -83,7 +78,6 @@ namespace MicroserviceTester.Tests.ContractTests
             returnedOrder.UserId.Should().Be(order.UserId);
             returnedOrder.ProductId.Should().Be(order.ProductId);
 
-            // Проверка, что все ожидаемые запросы были выполнены
             _server.LogEntries.Should().ContainSingle(entry =>
                 entry.RequestMessage.Path.Equals("/api/Orders", System.StringComparison.OrdinalIgnoreCase) &&
                 entry.RequestMessage.Method.Equals("POST", System.StringComparison.OrdinalIgnoreCase)

@@ -27,15 +27,12 @@ namespace MicroserviceTester.Tests.EndToEndTests
             var order = new Order { Id = 1, UserId = 1, ProductId = 1 };
 
             // Act
-            // Создание пользователя
             var userResponse = await _client.PostAsJsonAsync("/api/Users", user);
             Assert.Equal(HttpStatusCode.Created, userResponse.StatusCode);
 
-            // Создание продукта
             var productResponse = await _client.PostAsJsonAsync("/api/Products", product);
             Assert.Equal(HttpStatusCode.Created, productResponse.StatusCode);
 
-            // Создание заказа
             var orderResponse = await _client.PostAsJsonAsync("/api/Orders", order);
             if (orderResponse.StatusCode != HttpStatusCode.Created)
             {
@@ -45,7 +42,6 @@ namespace MicroserviceTester.Tests.EndToEndTests
             }
             Assert.Equal(HttpStatusCode.Created, orderResponse.StatusCode);
 
-            // Получение заказа
             var getOrderResponse = await _client.GetAsync($"/api/Orders/{order.Id}");
             Assert.Equal(HttpStatusCode.OK, getOrderResponse.StatusCode);
         }

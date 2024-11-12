@@ -8,6 +8,7 @@ namespace MicroserviceTester.Areas.OrderService.Services
         void AddOrder(Order order);
         Order? GetOrder(int id);
         bool OrderExists(int id);
+        void ClearAllOrders();
         IEnumerable<Order> GetAllOrders();
     }
 }
