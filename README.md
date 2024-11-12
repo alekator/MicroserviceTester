@@ -92,13 +92,13 @@ Ensure you have the following installed on your machine:
 1. **Clone the Repository**
 
    `git clone https://github.com/yourusername/MicroserviceTester.git`
-cd MicroserviceTester
+   cd MicroserviceTester
 
 3. **Restore Dependencies**
-Navigate to the project directory and restore the NuGet packages:
+   Navigate to the project directory and restore the NuGet packages:
 
-`dotnet restore`
+   `dotnet restore`
 
 3. **Build the Project**
 
-`dotnet build`
+   `dotnet build`
