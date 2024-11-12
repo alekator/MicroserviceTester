@@ -120,4 +120,59 @@ Swagger UI is integrated into the application for easy testing and exploration o
    Replace <PORT> with the port number displayed in the console output when the application starts.
 
 2. **Interact with APIs**
+
    Use the interactive Swagger interface to test various endpoints for Users, Products, and Orders.
+
+### Testing
+MicroserviceTester incorporates a diverse suite of tests to ensure each microservice functions correctly both individually and collectively. The testing strategy encompasses Unit Tests, Integration Tests, BDD Tests, Contract Tests, Concurrency Tests, Model Validation Tests, and Performance Tests.
+
+## Unit Tests
+- Purpose: Validate the functionality of individual components in isolation.
+- Tools Used: xUnit, Moq, FluentAssertions.
+- Coverage:
+-- UserServiceTests: Tests for adding and retrieving users.
+-- ProductServiceTests: Tests for adding and retrieving products.
+-- OrderServiceTests: Tests for adding and retrieving orders, ensuring dependencies on UserService and ProductService are respected.
+## Integration Tests
+Purpose: Test the interactions between different microservices and ensure they work together as expected.
+Tools Used: xUnit, Microsoft.AspNetCore.Mvc.Testing, FluentAssertions.
+Coverage:
+ApplicationEndToEndTests: Simulates full workflows including user, product, and order creation.
+ExtendedApplicationEndToEndTests: Additional scenarios to verify the robustness of service interactions.
+## BDD Tests
+Purpose: Define and execute behavior-driven scenarios to validate the system's behavior from an end-user perspective.
+Tools Used: SpecFlow, xUnit, FluentAssertions.
+Coverage:
+UsersSteps: Steps for creating users, products, and orders, and verifying the persistence of orders post user deletion.
+## Contract Tests
+Purpose: Ensure that microservices adhere to agreed-upon contracts, facilitating reliable communication between services.
+Tools Used: WireMock.Net, xUnit, FluentAssertions.
+Coverage:
+OrderServiceContractTests: Validates order creation contracts.
+ProductServiceContractTests: Validates product creation contracts.
+UserServiceContractTests: Confirms that UserService implements the necessary interfaces.
+## Concurrency Tests
+Purpose: Assess how the system handles multiple simultaneous operations, ensuring thread safety and data integrity.
+Tools Used: xUnit, FluentAssertions, System.Threading.
+Coverage:
+UserServiceConcurrencyTests: Tests concurrent user creation, ensuring only one user is created and others receive conflict responses.
+## Model Validation Tests
+Purpose: Verify that data models enforce validation rules, preventing invalid data from being processed.
+Tools Used: xUnit, FluentAssertions.
+Coverage:
+UserModelValidationTests: Tests scenarios like missing username and duplicate user IDs, ensuring appropriate HTTP responses.
+## Performance Tests
+Purpose: Measure the performance and efficiency of the services under various conditions.
+Tools Used: BenchmarkDotNet.
+Coverage:
+UserServiceBenchmark: Benchmarks the GetUserById and DeleteUser methods to assess their performance metrics.
+## Code Coverage
+Purpose: Ensure that the test suite adequately covers the codebase, identifying untested areas.
+Tools Used: Coverlet integrated with xUnit.
+Configuration:
+Code coverage is configured in the .csproj file with GenerateCoverageFile and CoverletOutputFormat set to opencover.
+Generating Coverage Report:
+bash
+Копировать код
+dotnet test /p:CollectCoverage=true
+The coverage report will be generated in the specified format, allowing for analysis of test coverage.
