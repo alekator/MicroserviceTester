@@ -177,14 +177,5 @@ MicroserviceTester incorporates a diverse suite of tests to ensure each microser
 ### Licenses
 This project utilizes several open-source libraries, each governed by its own license. Below is a summary of the main licenses involved:
 
-- .NET 8.0 SDK: MIT License
-- xUnit: Apache License 2.0
-- Moq: MIT License
-- FluentAssertions: MIT License
-- SpecFlow: Apache License 2.0
-- WireMock.Net: Apache License 2.0
-- BenchmarkDotNet: MIT License
-- Coverlet: MIT License
-- Swashbuckle.AspNetCore: Apache License 2.0
-For detailed information, please refer to each library's respective repository and license file.
-
+- ![MIT License] (http://opensource.org/licenses/MIT)
+- ![Apache License 2.0] (http://www.apache.org/licenses/LICENSE-2.0)
