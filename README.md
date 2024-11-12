@@ -177,5 +177,5 @@ MicroserviceTester incorporates a diverse suite of tests to ensure each microser
 ### Licenses
 This project utilizes several open-source libraries, each governed by its own license. Below is a summary of the main licenses involved:
 
-- [MIT License] (http://opensource.org/licenses/MIT)
-- [Apache License 2.0] (http://www.apache.org/licenses/LICENSE-2.0)
+- [MIT License](http://opensource.org/licenses/MIT)
+- [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
