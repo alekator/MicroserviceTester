@@ -92,7 +92,6 @@ Ensure you have the following installed on your machine:
 1. **Clone the Repository**
 
    `git clone https://github.com/yourusername/MicroserviceTester.git`
-   cd MicroserviceTester
 
 3. **Restore Dependencies**
    Navigate to the project directory and restore the NuGet packages:
@@ -102,3 +101,23 @@ Ensure you have the following installed on your machine:
 3. **Build the Project**
 
    `dotnet build`
+   
+### Running the Application
+To run the microservices application:
+
+1. **Navigate to the Project Directory**
+ `cd MicroserviceTester`
+2. **Run the Application**
+ `dotnet run`
+The application will start and listen on the default ports. You should see console output indicating that the application is running.
+
+### Using Swagger UI
+Swagger UI is integrated into the application for easy testing and exploration of the APIs.
+
+1. **Access Swagger UI**
+
+Open your browser and navigate to: `http://localhost:<PORT>/swagger`
+Replace <PORT> with the port number displayed in the console output when the application starts.
+
+2. **Interact with APIs**
+Use the interactive Swagger interface to test various endpoints for Users, Products, and Orders.
